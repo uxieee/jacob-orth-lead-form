@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Switch — Jacob Orth Lead Routing</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E%F0%9F%8E%9B%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="console" id="console">
+    <header class="console__head">
+      <div class="console__titles">
+        <span class="kicker">Lead Routing Control</span>
+        <h1 class="title">The&nbsp;<em>Switch</em></h1>
+      </div>
+      <button class="help-btn" id="help-btn" type="button" aria-label="How this page works" title="How it works">?</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero__state">
+        <span class="hero__dot"></span>
+        <div>
+          <p class="hero__mode" id="mode-label">Loading…</p>
+          <p class="hero__sub" id="mode-sub">Checking current routing…</p>
+        </div>
+      </div>
+
+      <button class="toggle" id="toggle" role="switch" aria-checked="false" aria-label="Toggle overflow routing" disabled>
+        <span class="toggle__track"><span class="toggle__knob"></span></span>
+        <span class="toggle__caption" id="toggle-caption">—</span>
+      </button>
+    </section>
+
+    <section class="editor" id="editor"></section>
+
+    <p class="msg" id="msg"></p>
+
+    <footer class="foot">
+      Flip <b>ON</b> only when you're slammed — every lead then goes to the team.
+      Flip <b>OFF</b> to take qualified buyers again.
+    </footer>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <p class="modal__eyebrow" id="modal-eyebrow">Confirm change</p>
+      <h2 class="modal__title" id="modal-title">Switch routing?</h2>
+      <p class="modal__body" id="modal-body"></p>
+      <input class="modal__input" id="modal-input" type="text" placeholder="Type confirm" autocomplete="off" autocapitalize="off" spellcheck="false" />
+      <div class="modal__actions">
+        <button class="modal__btn modal__btn--ghost" id="modal-cancel" type="button">Cancel</button>
+        <button class="modal__btn modal__btn--go" id="modal-go" type="button" disabled>Confirm</button>
+      </div>
+      <p class="modal__hint">Type <b>confirm</b> or <b>allow</b> to proceed.</p>
+    </div>
+  </div>
+
+  <div class="help" id="help" hidden>
+    <div class="help__card" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <button class="help__close" id="help-close" type="button" aria-label="Close">&times;</button>
+      <p class="help__eyebrow">Quick guide</p>
+      <h2 class="help__title" id="help-title">How the Switch works</h2>
+      <div class="help__body">
+        <p class="help__lead">This page decides which leads come <b>to you</b> and which go to <b>your team</b>. You can change it anytime — new leads follow your changes the moment you Save.</p>
+
+        <h3 class="help__h3">The idea in one line</h3>
+        <p>Each new lead is checked against your rules <b>from the top down</b>, and the <b>first rule it matches</b> decides where it goes. If it matches none of them, the <b>"Send everyone else to…"</b> line at the bottom decides. That's why the order of your rules matters.</p>
+
+        <h3 class="help__h3">How do I…</h3>
+
+        <details class="help__qa">
+          <summary>Send a certain kind of lead to myself</summary>
+          <div>Easiest way: tap a <b>preset</b> chip at the top that's close to what you want, then Save. To do it by hand: <b>+ Add rule</b>, tick the answers it applies to under <b>"If a lead matches"</b>, set <b>Then send → You</b>, tap <b>Done</b>, then <b>Save changes</b>.</div>
+        </details>
+
+        <details class="help__qa">
+          <summary>Add a new rule</summary>
+          <div>Tap <b>+ Add rule</b>. It opens ready to edit. Under <b>"If a lead matches"</b> tick which answers it applies to (e.g. <i>Looking to: Buy a home</i>), choose <b>You</b> or <b>Team</b> under <b>"Then send"</b>, and tap <b>Done</b>. Use the <b>↑ ↓</b> arrows to move it to the right spot.</div>
+        </details>
+
+        <details class="help__qa">
+          <summary>Make a rule more specific (add a second condition)</summary>
+          <div>Open the rule and tap <b>"+ add a condition…"</b>, then pick another question (like <i>Timeline</i> or <i>Price range</i>) and tick the answers. When a rule has more than one condition, a lead must match <b>all</b> of them for the rule to apply.</div>
+        </details>
+
+        <details class="help__qa">
+          <summary>Change where a rule sends leads</summary>
+          <div>Tap the rule to open it, then under <b>"Then send"</b> tap <b>You</b> or <b>Team</b>. Save.</div>
+        </details>
+
+        <details class="help__qa">
+          <summary>Change the order (and why it matters)</summary>
+          <div>Use the <b>↑ ↓</b> arrows on each rule. Because the first matching rule wins, put your most specific / most important rules near the top. If a rule shows a <b>"never runs"</b> note, a rule above it already catches those leads — move it up to fix that.</div>
+        </details>
+
+        <details class="help__qa">
+          <summary>Use a preset</summary>
+          <div>Tap a chip under <b>"Start from a preset"</b> (e.g. <i>Cash &amp; pre-approved</i>). It fills in a ready-made set of rules you can tweak. Nothing changes until you <b>Save</b>.</div>
+        </details>
+
+        <details class="help__qa">
+          <summary>Check a change before I save</summary>
+          <div>In the <b>Try it out</b> box, pick a pretend lead's answers. It instantly shows where that lead would be sent — <b>You</b> or <b>Team</b> — with your current rules.</div>
+        </details>
+
+        <details class="help__qa">
+          <summary>Delete a rule</summary>
+          <div>Tap the <b>trash</b> icon on the rule.</div>
+        </details>
+
+        <details class="help__qa">
+          <summary>Pause everything when I'm slammed</summary>
+          <div>Flip the <b>overflow switch</b> at the top to <b>ON</b> — every lead goes to your team until you flip it back <b>OFF</b>. While it's on, your rules dim to show they're paused.</div>
+        </details>
+
+        <h3 class="help__h3">What the words mean</h3>
+        <dl class="help__glossary">
+          <dt>Rule</dt><dd>One instruction: "if a lead looks like this, send them to You or Team."</dd>
+          <dt>Condition</dt><dd>The "if" part of a rule — an answer the lead gave. A rule can have several; the lead must match all of them.</dd>
+          <dt>Looking to</dt><dd>Whether the lead wants to <b>buy</b>, <b>sell</b>, rent <b>short-term</b> (then buy soon), or rent <b>long-term</b>.</dd>
+          <dt>Timeline</dt><dd>How soon they want to move — As soon as possible, Sooner than 3 months, 3–6 months, 6–12 months, or 1+ year.</dd>
+          <dt>Price range</dt><dd>The budget they picked. (Only buyers and short-term renters are asked this.)</dd>
+          <dt>Pre-approval</dt><dd>Whether a buyer is already pre-approved, paying cash, or still needs to be connected with a lender.</dd>
+          <dt>You / Team</dt><dd>Where the lead is sent — straight to you, or to a local expert on your team.</dd>
+          <dt>Send everyone else to…</dt><dd>The catch-all at the bottom for any lead that matches none of your rules.</dd>
+          <dt>Overflow switch</dt><dd>The master toggle up top. ON = every lead goes to the team, no matter the rules.</dd>
+          <dt>"Never runs" note</dt><dd>Means a rule above already covers those leads, so this one is never used. Move it higher to fix it.</dd>
+        </dl>
+
+        <h3 class="help__h3">Saving</h3>
+        <p>Nothing goes live until you press <b>Save changes</b> and type <b>confirm</b>. Changed your mind? Just reload the page to throw away a draft.</p>
+      </div>
+      <button class="help__done" id="help-done" type="button">Got it</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/switch.js"></script>
+</body>
+</html>

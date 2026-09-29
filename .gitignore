@@ -1,0 +1,12 @@
+node_modules
+dist
+worker/.dev.vars
+worker/.wrangler
+.wrangler
+.env
+.DS_Store
+.playwright-mcp
+# stray screenshots / scratch images at repo root (real assets live in public/)
+/*.png
+/*.jpg
+/*.jpeg

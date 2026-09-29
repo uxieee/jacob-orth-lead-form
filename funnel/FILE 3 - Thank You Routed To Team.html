@@ -1,0 +1,226 @@
+<meta charset="utf-8">
+<!-- ===========================================================
+     JACOB ORTH — THANK YOU: ROUTED TO THE TEAM  (accent TEAL)
+     GHL single-file embed. All styles scoped under .jo-root. Vanilla JS only.
+     Tone = dignity. The team is an upgrade in specialization, never a B-list.
+     =========================================================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+html{ background:#110e0a; }
+body{ margin:0; }
+.jo-root.jo-ty--team{
+  --bg-0:#110e0a; --bg-1:#19140e; --bg-2:#221a12;
+  --glass:rgba(36,28,19,0.66);
+  --edge:rgba(255,233,200,0.10);
+  --hair:rgba(255,233,200,0.085);
+  --ink-1:#f5eee1; --ink-2:#d8cab2; --ink-3:#9a8b72; --ink-4:#6b5f4d;
+  --amber:#ffb24d; --amber-glow:rgba(255,178,77,0.45);
+  --teal:#46d6bf;
+  --radius-lg:20px; --radius-md:13px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+
+  /* accent for this file */
+  --accent:#46d6bf;
+  --accent-glow:rgba(70,214,191,0.40);
+  --accent-soft:rgba(70,214,191,0.10);
+
+  position:relative; isolation:isolate; overflow:hidden; width:100%;
+  color:var(--ink-1); background:var(--bg-0);
+  font-family:'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.jo-root.jo-ty--team *,
+.jo-root.jo-ty--team *::before,
+.jo-root.jo-ty--team *::after{ box-sizing:border-box; }
+
+.jo-root.jo-ty--team::before{
+  content:""; position:absolute; inset:0; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(255,178,77,0.08) 0%, rgba(255,178,77,0) 55%),
+    radial-gradient(110% 80% at 0% 100%, rgba(70,214,191,0.09) 0%, rgba(70,214,191,0) 55%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-0) 100%);
+}
+.jo-root.jo-ty--team::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(255,233,200,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,233,200,0.04) 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size:44px 44px, 44px 44px, 160px 160px;
+  opacity:0.4;
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 25%, #000 0%, transparent 78%);
+  mask-image:radial-gradient(120% 90% at 50% 25%, #000 0%, transparent 78%);
+}
+
+.jo-root.jo-ty--team .jo-wrap{ position:relative; z-index:1; width:100%; max-width:720px; margin:0 auto; padding:64px 20px 64px; }
+
+.jo-root.jo-ty--team .jo-reveal{ opacity:0; transform:translateY(16px); }
+.jo-root.jo-ty--team .jo-reveal.jo-in{ opacity:1; transform:none; animation:jo-rise .52s var(--ease); }
+@keyframes jo-rise{ from{transform:translateY(16px);} to{transform:none;} }
+
+/* ---- status header ---- */
+.jo-root.jo-ty--team .jo-ty-head{ text-align:center; }
+.jo-root.jo-ty--team .jo-status{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 22px;
+}
+.jo-root.jo-ty--team .jo-dot{
+  width:9px; height:9px; border-radius:50%; background:var(--accent); flex:none;
+  box-shadow:0 0 0 0 var(--accent-glow);
+  animation:jo-pulse-t 2s ease-out infinite;
+}
+@keyframes jo-pulse-t{
+  0%{ box-shadow:0 0 0 0 var(--accent-glow); }
+  70%{ box-shadow:0 0 0 10px rgba(70,214,191,0); }
+  100%{ box-shadow:0 0 0 0 rgba(70,214,191,0); }
+}
+.jo-root.jo-ty--team .jo-check{
+  width:64px; height:64px; margin:0 auto 22px; border-radius:50%;
+  display:grid; place-items:center;
+  background:var(--accent-soft); border:1px solid var(--accent-glow);
+  animation:jo-settle .5s var(--ease) backwards;
+}
+.jo-root.jo-ty--team .jo-check svg{ width:30px; height:30px; stroke:var(--accent); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+@keyframes jo-settle{ from{ transform:scale(.96); } to{ transform:scale(1); } }
+
+.jo-root.jo-ty--team .jo-ty-head h1{
+  font-family:'Fraunces', Georgia, 'Times New Roman', serif;
+  font-weight:500; font-size:clamp(32px,5vw,48px); line-height:1.08;
+  letter-spacing:-0.01em; margin:0 0 16px; color:var(--ink-1);
+  animation:jo-settle .5s var(--ease) .08s backwards;
+  text-wrap:balance;
+}
+.jo-root.jo-ty--team .jo-em{ font-family:'Fraunces', Georgia, serif; font-style:italic; font-weight:500; color:var(--accent); }
+.jo-root.jo-ty--team .jo-ty-head__sub{
+  font-size:18px; line-height:1.55; color:var(--ink-2); margin:0 auto; max-width:34em;
+}
+
+/* ---- reframe / next cards ---- */
+.jo-root.jo-ty--team .jo-tycard{
+  background:var(--glass); border:1px solid var(--edge);
+  border-radius:var(--radius-md); padding:26px 24px;
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  margin:22px 0 0;
+}
+.jo-root.jo-ty--team .jo-tycard:first-of-type{ margin-top:34px; }
+.jo-root.jo-ty--team .jo-tycard--accent{
+  box-shadow:0 0 30px var(--accent-soft), 0 0 0 1px rgba(70,214,191,0.06);
+}
+.jo-root.jo-ty--team .jo-tycard__head{
+  display:flex; align-items:center; gap:11px; margin:0 0 12px;
+}
+.jo-root.jo-ty--team .jo-tycard__head svg{ flex:none; width:22px; height:22px; stroke:var(--accent); fill:none; stroke-width:1.7; }
+.jo-root.jo-ty--team .jo-tycard h2{
+  font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:16px;
+  letter-spacing:.01em; color:var(--ink-1); margin:0;
+}
+.jo-root.jo-ty--team .jo-tycard p{ font-size:16px; line-height:1.6; color:var(--ink-2); margin:0; }
+
+/* ---- footer (unified across all funnel pages) ---- */
+.jo-root .jo-footer{ text-align:center; border-top:1px solid var(--hair); margin:46px 0 0; padding:34px 0 0; }
+.jo-root .jo-footer__brand{ font-family:'Fraunces', Georgia, serif; font-style:italic; font-size:22px; color:var(--ink-1); margin:0 0 16px; letter-spacing:.01em; }
+.jo-root .jo-footer__tag{ font-size:15px; color:var(--ink-2); margin:0 0 20px; }
+.jo-root .jo-footer .jo-social{ display:flex; gap:14px; justify-content:center; margin:0 0 22px; }
+.jo-root .jo-footer .jo-social a{
+  width:42px; height:42px; border-radius:50%; display:grid; place-items:center;
+  border:1px solid var(--edge); color:var(--ink-3);
+  transition:color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+}
+.jo-root .jo-footer .jo-social a svg{ width:18px; height:18px; fill:currentColor; }
+.jo-root .jo-footer .jo-social a:hover{ color:#ffb24d; border-color:rgba(255,178,77,0.45); transform:translateY(-2px); }
+.jo-root .jo-footer .jo-social a:focus-visible{ outline:3px solid #ffb24d; outline-offset:3px; }
+.jo-root .jo-footer__fine{ font-size:13px; color:var(--ink-3); margin:6px 0 0; line-height:1.6; }
+
+@media (max-width:560px){
+  .jo-root.jo-ty--team .jo-wrap{ padding:48px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .jo-root.jo-ty--team .jo-reveal{ opacity:1 !important; transform:none !important; animation:none !important; }
+  .jo-root.jo-ty--team .jo-dot{ animation:none !important; box-shadow:none !important; }
+  .jo-root.jo-ty--team .jo-check,
+  .jo-root.jo-ty--team .jo-ty-head h1{ animation:none !important; transform:none !important; opacity:1 !important; }
+  .jo-root.jo-ty--team .jo-social a{ transition:none !important; }
+}
+</style>
+
+<div class="jo-root jo-ty--team">
+  <div class="jo-wrap">
+
+    <!-- 1 — STATUS HEADER -->
+    <header class="jo-ty-head">
+      <div class="jo-check" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 13l4 4 10-11"/></svg>
+      </div>
+      <p class="jo-status jo-reveal"><span class="jo-dot" aria-hidden="true"></span>Received</p>
+      <h1>You're all set — Jacob's team has your <span class="jo-em">details.</span></h1>
+      <p class="jo-ty-head__sub jo-reveal">Your details came through, and the right person on Jacob's side is already on it.</p>
+    </header>
+
+    <!-- 2 — WHY THE TEAM (reframe, teal edge) -->
+    <section class="jo-tycard jo-tycard--accent jo-reveal">
+      <div class="jo-tycard__head">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M16 6.5a3 3 0 0 1 0 5.8M17 19a5.5 5.5 0 0 0-3-4.9"/></svg>
+        <h2>You're matched to the right specialist</h2>
+      </div>
+      <p>Jacob works with a small, hand-picked local team so the right person handles exactly what you need — someone who knows your kind of move inside and out. It's how you get the best fit, not just the first available.</p>
+    </section>
+
+    <!-- 3 — WHAT HAPPENS NEXT -->
+    <section class="jo-tycard jo-reveal">
+      <div class="jo-tycard__head">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 8l9 5 9-5"/></svg>
+        <h2>What happens next</h2>
+      </div>
+      <p>Someone from Jacob's side will reach out within 1 business day, by phone or email. Keep an eye out — it'll come from Jacob's team.</p>
+    </section>
+
+    <!-- 4 — NO RUSH -->
+    <section class="jo-tycard jo-reveal">
+      <div class="jo-tycard__head">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h2>No rush</h2>
+      </div>
+      <p>Whether you're moving soon or just starting to plan, there's no rush and no pressure. We'll meet you wherever you are — and help you figure out the rest.</p>
+    </section>
+
+    <!-- 5 — FOOTER (unified) -->
+    <footer class="jo-footer">
+      <p class="jo-footer__brand jo-reveal">Jacob's Life in Vegas</p>
+      <p class="jo-footer__tag jo-reveal">Helping people actually live in Vegas.</p>
+      <div class="jo-social jo-reveal">
+        <a href="https://facebook.com/jacobslifeinvegas" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M13.5 21v-7h2.3l.4-2.8h-2.7V9.4c0-.8.2-1.4 1.4-1.4h1.5V5.5c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2H8.2V14h2.5v7h2.8z"/></svg>
+        </a>
+        <a href="https://instagram.com/jacobslifeinvegas" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 7.2A4.8 4.8 0 1 0 16.8 12 4.8 4.8 0 0 0 12 7.2zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1zM16.9 7a1.1 1.1 0 1 0 1.1 1.1A1.1 1.1 0 0 0 16.9 7zM12 4.7c2.4 0 2.7 0 3.6.05a4.9 4.9 0 0 1 1.7.3 2.8 2.8 0 0 1 1 .67 2.8 2.8 0 0 1 .67 1 4.9 4.9 0 0 1 .3 1.7c.05.9.05 1.2.05 3.6s0 2.7-.05 3.6a4.9 4.9 0 0 1-.3 1.7 3 3 0 0 1-1.67 1.67 4.9 4.9 0 0 1-1.7.3c-.9.05-1.2.05-3.6.05s-2.7 0-3.6-.05a4.9 4.9 0 0 1-1.7-.3 3 3 0 0 1-1.67-1.67 4.9 4.9 0 0 1-.3-1.7C4.7 14.7 4.7 14.4 4.7 12s0-2.7.05-3.6a4.9 4.9 0 0 1 .3-1.7 3 3 0 0 1 1.67-1.67 4.9 4.9 0 0 1 1.7-.3c.9-.05 1.2-.05 3.6-.05M12 3c-2.4 0-2.8 0-3.7.05a6.6 6.6 0 0 0-2.2.42 4.7 4.7 0 0 0-2.6 2.6 6.6 6.6 0 0 0-.42 2.2C3 9.2 3 9.6 3 12s0 2.8.05 3.7a6.6 6.6 0 0 0 .42 2.2 4.7 4.7 0 0 0 2.6 2.6 6.6 6.6 0 0 0 2.2.42C9.2 21 9.6 21 12 21s2.8 0 3.7-.05a6.6 6.6 0 0 0 2.2-.42 4.7 4.7 0 0 0 2.6-2.6 6.6 6.6 0 0 0 .42-2.2c.05-.9.05-1.3.05-3.7s0-2.8-.05-3.7a6.6 6.6 0 0 0-.42-2.2 4.7 4.7 0 0 0-2.6-2.6 6.6 6.6 0 0 0-2.2-.42C14.8 3 14.4 3 12 3z"/></svg>
+        </a>
+        <a href="https://youtube.com/c/jacobslifeinvegas" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.75-1.75C18.3 5 12 5 12 5s-6.3 0-7.85.45A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.75 1.75C5.7 19 12 19 12 19s6.3 0 7.85-.45A2.5 2.5 0 0 0 21.6 16.8 26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 14.8V9.2l4.8 2.8z"/></svg>
+        </a>
+      </div>
+      <p class="jo-footer__fine jo-reveal">Your info is kept private and never sold.</p>
+      <p class="jo-footer__fine jo-reveal">© 2026 Jacob's Life in Vegas. All rights reserved.</p>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var root = document.currentScript.previousElementSibling;
+  while(root && !(root.classList && root.classList.contains('jo-root'))){ root = root.previousElementSibling; }
+  if(!root) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = root.querySelectorAll('.jo-reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    reveals.forEach(function(el){ el.classList.add('jo-in'); });
+  } else {
+    reveals.forEach(function(el,i){ setTimeout(function(){ el.classList.add('jo-in'); }, 120 + i*60); });
+  }
+})();
+</script>

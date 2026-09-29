@@ -1,0 +1,12 @@
+name = "jacob-orth-lead-form"
+main = "proxy.js"
+compatibility_date = "2025-06-01"
+
+# The form & switch run from the Pages origin (the GHL page embeds the form as an
+# iframe of jacob-orth-form.pages.dev, so THAT is the Origin the worker sees, not the
+# GHL page). The GHL domain is included too in case of a future direct embed.
+[vars]
+ALLOWED_ORIGINS = "https://jacob-orth-form.pages.dev,https://realestate.jacobslifeinvegas.com"
+
+[observability]
+enabled = true
